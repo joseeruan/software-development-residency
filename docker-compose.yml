@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:latest
+    container_name: nfs-project-api-db
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: nfs-project-api
+      POSTGRES_USER: di2win
+      POSTGRES_PASSWORD: 12345678
