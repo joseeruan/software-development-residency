@@ -8,15 +8,15 @@ import {
   Param,
   Delete,
 } from '@nestjs/common';
-import { ClienteService } from './cliente.service';
-import { ClienteDto } from './dto.cliente';
+import { ClienteService } from '../services/cliente.service';
+import { ClienteDto } from '../dtos/cliente.dto';
 
 @Controller('cliente')
 export class ClienteController {
   constructor(private readonly clienteService: ClienteService) {}
 
-  @Post()
-  async create(@Body() cliente: ClienteDto): Promise<any> {
+  @Post('register')
+  async create(@Body() cliente: ClienteDto) {
     return await this.clienteService.create(cliente);
   }
 
@@ -28,13 +28,19 @@ export class ClienteController {
 
   @Get(':id')
   @HttpCode(HttpStatus.OK)
-  async findById(@Param('id') id: string) {
+  async findById(@Param('id') id: number) {
     return await this.clienteService.findById(id);
   }
 
   @Delete(':id')
-  @HttpCode(HttpStatus.OK)
+  @HttpCode(HttpStatus.NO_CONTENT)
   async remove(@Param('id') id: string) {
     return await this.clienteService.remove(id);
+  }
+
+  @Get('profile/:id')
+  @HttpCode(HttpStatus.OK)
+  async Searchprofile(@Param('id') id: number) {
+    return await this.clienteService.findByProfile(id);
   }
 }

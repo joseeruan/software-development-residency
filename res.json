@@ -1,0 +1,174 @@
+{
+    "mensagem": "Concluido sem erros.", 
+    "guid": "73-09012024-144540-c1f5b66b-ba78-4453-8b0b-f7240aa09a8c",
+    "erros": {},
+    "resultados": [
+        { 
+            "pagina": 1,
+            "qualidadeDaImagem": {},
+            "tipoDeDocumento": {},
+            "camposExtraidos": {
+                "Aliquota": [
+                    {
+                        "probability": 0.7120915850003561,
+                        "text": "27,60"
+                    }
+                ],
+                "Base_de_calculo": [
+                    {
+                        "probability": 0.999997079372406,
+                        "text": "230,00"
+                    }
+                ],
+                "Retencoes->COFINS": [
+                    {
+                        "probability": 0.9217278162638346,
+                        "text": "0,00"
+                    }
+                ],
+                "Retencoes->PIS": [
+                    {
+                        "probability": 0.6785832564036052,
+                        "text": "76,66"
+                    }
+                ],
+                "UF->tomador_de_servicos": [
+                    {
+                        "probability": 0.965079074382782,
+                        "text": "RS"
+                    }
+                ],
+                "Valor_ISSQN_retido": [
+                    {
+                        "probability": 0.39772240594029423,
+                        "text": "20,00"
+                    }
+                ],
+                "Valor_do_COFINS": [
+                    {
+                        "probability": 0.7704163582026958,
+                        "text": "0000"
+                    }
+                ],
+                "Valor_do_INSS": [
+                    {
+                        "probability": 0.22313478326797487,
+                        "text": "000000"
+                    }
+                ],
+                "Valor_total_do_desconto": [
+                    {
+                        "probability": 0.6406738559405009,
+                        "text": "0,00"
+                    }
+                ],
+                "bairro->tomador_de_servicos": [
+                    {
+                        "probability": 0.9484565314650535,
+                        "text": "Vinhedos"
+                    }
+                ],
+                "cnpj_cpf->prestador_de_servicos": [
+                    {
+                        "probability": 0.7282628395233431,
+                        "text": "43.0908.90.627.936 / 0001 - 30 - 55 - 001 - 000.000.175 - 000.896.536 -"
+                    }
+                ],
+                "cpf_cnpj->tomador_de_servicos": [
+                    {
+                        "probability": 0.8299943808217843,
+                        "text": "111.111.111 - 11"
+                    }
+                ],
+                "data_emissao": [
+                    {
+                        "probability": 0.7431439347068469,
+                        "text": "010 / 000000"
+                    },
+                    {
+                        "probability": 0.9343677484989167,
+                        "text": "07 / 08 / 2009"
+                    }
+                ],
+                "municipio->tomador_de_servicos": [
+                    {
+                        "probability": 0.8569662665128708,
+                        "text": "Bento Gonçalves"
+                    }
+                ],
+                "nome_razao_social->tomador_de_servicos": [
+                    {
+                        "probability": 0.8706509176095327,
+                        "text": "Dionísio de Baco"
+                    }
+                ],
+                "numero_endereco->tomador_de_servicos": [
+                    {
+                        "probability": 0.9859984132051467,
+                        "text": "386"
+                    }
+                ],
+                "numero_nota_fiscal": [
+                    {
+                        "probability": 0.9829996484518051,
+                        "text": "000175"
+                    }
+                ],
+                "rua->tomador_de_servicos": [
+                    {
+                        "probability": 0.9529975473682085,
+                        "text": "Rua dos Vinhedos,"
+                    }
+                ],
+                "serie_nfse": [
+                    {
+                        "probability": 0.9849910759925842,
+                        "text": "1"
+                    }
+                ],
+                "telefone->tomador_de_servicos": [
+                    {
+                        "probability": 0.9789754917621613,
+                        "text": "3454 - 6877"
+                    }
+                ],
+                "valor_ISSRF": [
+                    {
+                        "probability": 0.5781523132324219,
+                        "text": "0.00"
+                    }
+                ],
+                "valor_deducao_descontos": [
+                    {
+                        "probability": 0.3641638457775116,
+                        "text": "0.00"
+                    }
+                ],
+                "valor_do_PIS": [
+                    {
+                        "probability": 0.36886175473531085,
+                        "text": "0,00"
+                    }
+                ],
+                "valor_liquido_da_nota": [
+                    {
+                        "probability": 0.9988889247179031,
+                        "text": "230,00"
+                    },
+                    {
+                        "probability": 0.4721681018471718,
+                        "text": "0000"
+                    },
+                    {
+                        "probability": 0.481210818529129,
+                        "text": "19.00"
+                    },
+                    {
+                        "probability": 0.6422500385840734,
+                        "text": "12,00"
+                    }
+                ]
+            }
+        }
+    ]
+}

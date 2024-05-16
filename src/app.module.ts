@@ -1,17 +1,17 @@
 import { Module } from '@nestjs/common';
-import { HttpModule } from '@nestjs/axios';
 import { ConfigModule } from '@nestjs/config';
-import { DbModule } from './db/db.module';
-import { ClienteModule } from './cliente/cliente.module';
+//import { DbModule } from './db/db.module';
+//import { ClienteModule } from './cliente/cliente.module';
 import { NfeModule } from './nfe/nfe.module';
+//import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
-    HttpModule,
     ConfigModule.forRoot({ isGlobal: true }),
-    DbModule,
-    ClienteModule,
+    //DbModule,
+    //ClienteModule,
     NfeModule,
+   //AuthModule,
   ],
 })
 export class AppModule {}
