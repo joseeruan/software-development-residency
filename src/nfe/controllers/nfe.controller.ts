@@ -2,20 +2,23 @@ import {
   Controller,
   HttpCode,
   Post,
+  Body,
   UseInterceptors,
   UploadedFile,
   BadRequestException,
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
-import multerConfig from './middleware/multer.config';
-import { NfeService } from './nfe.service';
-//import { transform } from './transform.service';
+import multerConfig from '../middleware/multer.config';
+import { NfeService } from '../servicesApi/extraiDados.service';
+import { TransformData } from '../servicesApi/transformer.service';
+import { NfeDbService } from '../nfe.db.service';
 
 @Controller('nfe')
 export class NFEController {
   constructor(
-    private apiExter: NfeService,
-    //private fileService: transform,
+    private readonly apiExter: NfeService,
+    private readonly transform: TransformData,
+    private readonly dbNfe: NfeDbService,
   ) {}
 
   @Post('upload')
@@ -26,7 +29,8 @@ export class NFEController {
       if (!file) {
         throw new BadRequestException('Nenhuma imagem foi enviada.');
       }
-      const response = await this.apiExter.postApiDi2win(file);
+      const response = await this.apiExter.sendApiExtraiDados(file);
+      // const response = await this.apiExter.postAPISerpro();
 
       return response;
     } catch (error) {
@@ -40,4 +44,12 @@ export class NFEController {
     create(@UploadedFile() file: Express.Multer.File, @Body() Body: any) {
      // const { id, chave } = Body;
     }*/
+
+  @Post('test')
+  async test(@Body() data: any) {
+    const dataTransform = this.transform.transformer(data);
+    //const dbSave = await this.dbNfe.save(dataTransform);
+    return dataTransform;
+    // return this.transform.transformer(data);
+  }
 }

@@ -2,19 +2,14 @@ import { IsString, MinLength, MaxLength, IsEmail } from 'class-validator';
 
 export class ClienteDto {
   @IsString()
-  @MinLength(3)
+  @MinLength(8)
   @MaxLength(100)
   nome: string;
 
   @IsString()
-  @MinLength(3)
+  @MinLength(9)
   @MaxLength(15)
   cpf_cnpj: string;
-
-  @IsString()
-  @MinLength(5)
-  @MaxLength(255)
-  endereco: string;
 
   @IsString()
   @MinLength(5)
@@ -23,6 +18,11 @@ export class ClienteDto {
 
   @IsString()
   @IsEmail()
-  @MaxLength(255)
+  @MaxLength(50)
   email: string;
+
+  @IsString()
+  @MinLength(8)
+  @MaxLength(20)
+  senha: string;
 }

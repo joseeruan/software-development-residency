@@ -1,22 +1,22 @@
 import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 
-@Entity({ name: 'cliente' })
-export class ClienteEntity {
+@Entity({ name: 'client' })
+export class Client {
   @PrimaryGeneratedColumn()
-  idcliente?: number;
+  clientid?: number;
 
   @Column({ length: 100 })
-  nome: string;
+  name: string;
 
   @Column({ length: 15 })
   cpf_cnpj: string;
 
   @Column({ length: 50 })
+  phone_number: string;
+
+  @Column({ length: 50 })
   email: string;
 
-  @Column({ length: 20 })
-  telefone: string;
-
   @Column({ length: 256 })
-  senha_hash: string;
+  password_hash: string;
 }

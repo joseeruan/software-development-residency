@@ -1,20 +1,25 @@
 import { HttpService } from '@nestjs/axios';
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import * as fs from 'fs';
-import { dataResponse } from './interfaces/dataInterface';
-import { transformData } from './transformData.service';
+//import { dataDto } from './interfaces/dataInterface';
+import { TransformData } from './transformer.service';
+import { ConfigService } from '@nestjs/config';
 
 @Injectable()
 export class NfeService {
   constructor(
     private readonly httpService: HttpService,
-    private readonly transformData: transformData,
+    private readonly transformData: TransformData,
+    private readonly configService: ConfigService,
   ) {}
 
-  async postApiDi2win(image: Express.Multer.File): Promise<dataResponse> {
+  async sendApiExtraiDados(image: Express.Multer.File): Promise<any> {
     try {
       const id = 73;
-      const docClassification = 'nfs';
+      const token = this.configService.get<string>('TOKEN_EXTRAIDADOS');
+      const url = this.configService.get<string>('URL_EXTRAIDADOS');
+      const docClassification =
+        this.configService.get<string>('DOC_EXTRAIDADOS');
       const buffer = fs.readFileSync(image.path);
       const imgBase64 = buffer.toString('base64');
       const data = {
@@ -24,12 +29,12 @@ export class NfeService {
       };
 
       const response = await this.httpService.axiosRef.post(
-        'https://homol.extraidados.com.br/api/portalEngines-processApp/processWithoutFile',
+        url,
         data,
         {
           headers: {
             'Content-Type': 'application/json',
-            authorization: `8LsOj14ouqioFtwugzhEnDAWGuMz45CQNkMh20WkNe7znZXsHZ`,
+            'Authorization': token,
           },
         },
       );
@@ -46,28 +51,9 @@ export class NfeService {
         );
       }
 
-      return this.transformData.data(response.data);
+      return this.transformData.transformer(response.data);
     } catch (error) {
       throw error;
-    }
-  }
-
-  async postAPISerpro() {
-    try {
-      const response = await this.httpService.axiosRef.get(
-        'https://api.adviceslip.com/advice',
-      );
-
-      const data = {
-        id: response.data.slip.id,
-        advice: response.data.slip.advice,
-      };
-
-      console.log(data);
-      return data;
-      console.log(data);
-    } catch (error) {
-      console.error('Erro:', error);
     }
   }
 }
