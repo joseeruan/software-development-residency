@@ -1,22 +1,22 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 
 @Entity({ name: 'endereco' })
-export class endereco {
+export class EnderecoEntity {
   @PrimaryGeneratedColumn()
-  idEndereco?: string;
+  idendereco: number;
 
-  @Column({ length: 255 })
+  @Column({ type: 'varchar', length: 255 })
   rua: string;
 
-  @Column({ length: 255 })
+  @Column({ type: 'varchar', length: 255, nullable: true })
   complemento: string;
 
-  @Column({ length: 255 })
+  @Column({ type: 'varchar', length: 255 })
   bairro: string;
 
-  @Column({ length: 20 })
+  @Column({ type: 'varchar', length: 20 })
   cep: string;
 
-  @Column({ length: 255 })
+  @Column({ type: 'varchar', length: 255 })
   municipio_uf: string;
 }

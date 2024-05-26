@@ -22,9 +22,9 @@ export class SerproService {
     this.serproUrl = this.configService.get<string>('URL_SERPRO');
   }
 
-  async verifyNFE(numeroNota: string): Promise<number | HttpException> {
+  public async verifyNFE(numeroNota: string): Promise<number> {
     try {
-      const token: string | HttpException = await this.getToken();
+      const token: string = await this.getToken();
 
       const urlSerpro: string = this.serproUrl + numeroNota;
 
@@ -56,7 +56,7 @@ export class SerproService {
     }
   }
 
-  private async getToken(): Promise<string | HttpException> {
+  private async getToken(): Promise<string> {
     if (!this.cachedToken || this.tokenExpiration <= new Date()) {
       const concat: string = this.key + ':' + this.secret;
       const concat64: string = Buffer.from(concat, 'utf-8').toString('base64');
