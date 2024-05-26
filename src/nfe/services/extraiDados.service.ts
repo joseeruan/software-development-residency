@@ -4,6 +4,8 @@ import * as fs from 'fs';
 //import { dataDto } from './interfaces/dataInterface';
 import { TransformData } from './transformer.service';
 import { ConfigService } from '@nestjs/config';
+import { NfeResponseDto } from '../dtos/nfe.dto';
+import { AxiosResponse } from 'axios';
 
 @Injectable()
 export class NfeService {
@@ -13,7 +15,9 @@ export class NfeService {
     private readonly configService: ConfigService,
   ) {}
 
-  async sendApiExtraiDados(image: Express.Multer.File): Promise<any> {
+  public async sendApiExtraiDados(
+    image: Express.Multer.File,
+  ): Promise<NfeResponseDto> {
     try {
       const id = 73;
       const token = this.configService.get<string>('TOKEN_EXTRAIDADOS');
@@ -28,13 +32,13 @@ export class NfeService {
         documentClassification: docClassification,
       };
 
-      const response = await this.httpService.axiosRef.post(
+      const response: AxiosResponse = await this.httpService.axiosRef.post(
         url,
         data,
         {
           headers: {
             'Content-Type': 'application/json',
-            'Authorization': token,
+            Authorization: token,
           },
         },
       );

@@ -20,7 +20,7 @@ export class AuthService {
     );
   }
 
-  async signIn(email: string, senha: string): Promise<AuthResponseDto | Error> {
+  public async signIn(email: string, senha: string): Promise<AuthResponseDto> {
     const userFound: FindByEmailResponse =
       await this.clienteService.findByEmail(email);
 

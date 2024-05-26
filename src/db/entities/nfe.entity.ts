@@ -1,37 +1,52 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  OneToOne,
+  JoinColumn,
+} from 'typeorm';
+import { ClientePrestadorEntity } from './clientePrestador.entity';
+import { ClienteTomadorEntity } from './clienteTomador.entity';
+import { ServicosEntity } from './servicos.entity';
 
 @Entity({ name: 'nfe' })
-export class Nfe {
-  @PrimaryGeneratedColumn('uuid')
-  id: string;
+export class NfeEntity {
+  @PrimaryGeneratedColumn()
+  idnfe: number;
 
-  @Column({ length: 20, nullable: true })
-  numeronfe: string;
+  @Column({ type: 'varchar', length: 20 })
+  numero_nota: string;
 
-  @Column({ type: 'timestamp', nullable: true })
-  data_emissao: Date;
+  @Column({ type: 'date' })
+  data_geracao: Date;
 
-  @Column({ length: 255, nullable: true })
-  emitente_razao_social: string;
+  @Column({ type: 'date' })
+  data_competencia: Date;
 
-  @Column({ length: 14, nullable: true })
-  emitente_cnpj: string;
+  @Column({ type: 'varchar', length: 255 })
+  codigo_autenticidade: string;
 
-  @Column({ length: 20, nullable: true })
-  emitente_inscricao_estadual: string;
+  @Column({ type: 'varchar', length: 255 })
+  tributacao: string;
 
-  @Column({ length: 255, nullable: true })
-  emitente_endereco: string;
+  @Column({ type: 'varchar', length: 20 })
+  numero_rps: string;
 
-  @Column({ length: 255, nullable: true })
-  destinatario_nome: string;
+  @Column({ type: 'varchar', length: 20 })
+  serie_rps: string;
 
-  @Column({ length: 15, nullable: true })
-  destinatario_cpf_cnpj: string;
+  @Column({ type: 'timestamp' })
+  emissao_rps: Date;
 
-  @Column({ length: 255, nullable: true })
-  destinatario_endereco: string;
+  @OneToOne(() => ClientePrestadorEntity)
+  @JoinColumn({ name: 'idprestador' })
+  prestador: ClientePrestadorEntity;
 
-  @Column({ type: 'bytea', nullable: true })
-  imagem_nfe: Buffer;
+  @OneToOne(() => ClienteTomadorEntity)
+  @JoinColumn({ name: 'idtomador' })
+  tomador: ClienteTomadorEntity;
+
+  @OneToOne(() => ServicosEntity)
+  @JoinColumn({ name: 'idservico' })
+  servico: ServicosEntity;
 }
